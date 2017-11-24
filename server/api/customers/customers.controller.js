@@ -29,6 +29,17 @@ function makeCustomersController(deps) {
         let response = errorService.createGeneralError(error);
         return reply(response.body).code(response.statusCode);
       }
+    },
+
+    async delete(request, reply) {
+      try {
+        customersService.delete({ customer: request.params.customerId });
+        let response = responsesService.createResponseData(customersResponses.delete_ok);
+        return reply(response.body).code(response.statusCode);
+      } catch (error) {
+        let response = errorService.createGeneralError(error);
+        return reply(response.body).code(response.statusCode);
+      }
     }
   };
 }

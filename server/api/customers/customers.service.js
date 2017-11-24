@@ -22,6 +22,14 @@ function makeCustomersService(deps) {
         }
       });
     },
+    delete({customer}) {
+      socketService.broadcastMessage('customers', {
+        action: 'delete',
+        data: {
+          customer: customer
+        }
+      });
+    },
   };
 }
 

@@ -15,4 +15,10 @@ module.exports = (server, container) => {
     handler: customersController.show
   });
 
+  server.route({
+    method: 'DELETE',
+    path: '/customers/show/{customerId}',
+    handler: customersController.delete
+  });
+
 };
